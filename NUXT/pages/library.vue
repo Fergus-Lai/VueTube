@@ -11,11 +11,11 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </div>
-    <div>
+    <div class="d-flex flex-column-reverse">
       <playlist-card
-        v-for="(playlist, key) in playlists"
-        :key="key"
-        :playlist="JSON.parse(playlist)"
+        v-for="(playlist, index) in playlists"
+        :key="index"
+        :playlist="playlist"
       />
     </div>
 
@@ -79,11 +79,7 @@ export default {
   },
   computed: {
     playlists() {
-      const playlists = this.$store.state.playlist.playlists;
-      Object.keys(playlists).forEach(
-        (key) => (playlists[key] = JSON.parse(playlists[key]))
-      );
-      return playlists;
+      return this.$store.state.playlist.playlists;
     },
   },
   mounted() {
@@ -94,6 +90,7 @@ export default {
     createPlaylist: function () {
       this.$store.commit("playlist/createPlaylist", this.playlistName);
       this.dialog = false;
+      alert(JSON.stringify(this.playlists));
     },
   },
 };
