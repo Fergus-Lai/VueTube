@@ -20,6 +20,7 @@ const stringToPlaylists = (playlistsString) => {
   Object.keys(tempPlaylists).forEach((key) => {
     tempPlaylists[key] = JSON.parse(tempPlaylists[key]);
   });
+  console.log(tempPlaylists);
   return tempPlaylists;
 };
 

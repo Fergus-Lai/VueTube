@@ -11,8 +11,14 @@
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </div>
+    <div>
+      <playlist-card
+        v-for="(playlist, key) in playlists"
+        :key="key"
+        :playlist="JSON.parse(playlist)"
+      />
+    </div>
 
-    <playlist-card />
     <v-btn
       text
       class="entry text-left setting-btn no-spacing"
@@ -70,6 +76,15 @@ export default {
       lang: {},
       playlistName: null,
     };
+  },
+  computed: {
+    playlists() {
+      const playlists = this.$store.state.playlist.playlists;
+      Object.keys(playlists).forEach(
+        (key) => (playlists[key] = JSON.parse(playlists[key]))
+      );
+      return playlists;
+    },
   },
   mounted() {
     const lang = this.$lang();

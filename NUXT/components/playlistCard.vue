@@ -33,19 +33,19 @@
         class="d-flex flex-column justify-center align-center background-opaque"
         style="position: absolute; top: 0; right: 0; width: 50%; height: 100%"
       >
-        <div>420</div>
+        <div>{{ playlist.videos.length }}</div>
         <v-icon>mdi-playlist-play</v-icon>
       </div>
     </v-img>
-    <div class="pa-4" v-emoji style="font-size: 0.75rem !important">
-      <b>Work in Progress</b>
+    <div v-emoji class="pa-4" style="font-size: 0.75rem !important">
+      <b>{{ playlist.name }}</b>
 
       <div
         class="background--text caption mt-2"
         :class="$vuetify.theme.dark ? 'text--lighten-4' : 'text--darken-4'"
       >
         Bottom Text <br />
-        420 videos
+        {{ playlist.videos.length }} videos
       </div>
     </div>
     <v-spacer></v-spacer>
@@ -71,3 +71,11 @@
     </div>
   </v-card>
 </template>
+
+<script>
+export default {
+  props: {
+    playlist: { type: Object, required: true },
+  },
+};
+</script>
