@@ -1,5 +1,6 @@
 export const state = () => ({
   playlists: [],
+  currentPlaylist: null,
 });
 
 // Shape of playlists
@@ -30,5 +31,11 @@ export const mutations = {
   removeFromPlaylist(state, id, videoIndex) {
     state.playlists[id].video.splice(videoIndex, 1);
     localStorage.setItem("playlists", JSON.stringify(state.playlists));
+  },
+  changeToPlaylist(state, videoIndex) {
+    state.currentPlaylist = state.playlists[videoIndex];
+  },
+  exitPlaylist(state) {
+    state.currentPlaylist = null;
   },
 };

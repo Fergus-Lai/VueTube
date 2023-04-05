@@ -1,7 +1,9 @@
 <template>
-  <v-card
+  <v-btn
     v-ripple
-    class="background d-flex flex-row overflow-hidden mb-4 mx-4"
+    text
+    class="background d-flex flex-row overflow-hidden mb-4 mx-4 mainCard"
+    to="/playlist"
     style="height: 6rem !important"
     :class="
       $store.state.tweaks.roundThumb && $store.state.tweaks.roundTweak > 0
@@ -15,7 +17,7 @@
         ? `${$store.state.tweaks.roundTweak / 3}rem`
         : '0',
     }"
-    flat
+    @click.native="clickHandler"
   >
     <v-img
       contain
@@ -37,7 +39,7 @@
         <v-icon>mdi-playlist-play</v-icon>
       </div>
     </v-img>
-    <div v-emoji class="pa-4" style="font-size: 0.75rem !important">
+    <div v-emoji class="pa-4 text-left" style="font-size: 0.75rem !important">
       <b>{{ playlist.name }}</b>
 
       <div
@@ -69,7 +71,7 @@
         <v-icon>mdi-playlist-plus</v-icon>
       </v-btn>
     </div>
-  </v-card>
+  </v-btn>
 </template>
 
 <script>
@@ -77,5 +79,17 @@ export default {
   props: {
     playlist: { type: Object, required: true },
   },
+  methods: {
+    clickHandler() {
+      this.$emit("click");
+    },
+  },
 };
 </script>
+
+<style scoped>
+.mainCard {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+</style>

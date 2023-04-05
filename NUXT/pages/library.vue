@@ -16,6 +16,7 @@
         v-for="(playlist, index) in playlists"
         :key="index"
         :playlist="playlist"
+        @click="changeToPlaylist(index)"
       />
     </div>
 
@@ -90,7 +91,9 @@ export default {
     createPlaylist: function () {
       this.$store.commit("playlist/createPlaylist", this.playlistName);
       this.dialog = false;
-      alert(JSON.stringify(this.playlists));
+    },
+    changeToPlaylist: function (videoIndex) {
+      this.$store.commit("playlist/changeToPlaylist", videoIndex);
     },
   },
 };
