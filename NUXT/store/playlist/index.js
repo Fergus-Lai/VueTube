@@ -9,6 +9,9 @@ export const state = () => ({
 // Shape of playlist
 // {name: string, videos: []}
 
+// Shape of currentPlaylist
+// {index: number, name: string, videos: []}
+
 export const mutations = {
   initPlaylists(state) {
     if (process.client) {
@@ -28,12 +31,16 @@ export const mutations = {
     state.playlists[index].video.push(video);
     localStorage.setItem("playlists", JSON.stringify(state.playlists));
   },
-  removeFromPlaylist(state, id, videoIndex) {
-    state.playlists[id].video.splice(videoIndex, 1);
+  removeFromPlaylist(state, { playlistIndex, videoIndex }) {
+    state.currentPlaylist.videos.splice(videoIndex, 1);
+    state.playlists[playlistIndex].video.splice(videoIndex, 1);
     localStorage.setItem("playlists", JSON.stringify(state.playlists));
   },
   changeToPlaylist(state, videoIndex) {
-    state.currentPlaylist = state.playlists[videoIndex];
+    state.currentPlaylist = {
+      index: videoIndex,
+      ...state.playlists[videoIndex],
+    };
   },
   exitPlaylist(state) {
     state.currentPlaylist = null;

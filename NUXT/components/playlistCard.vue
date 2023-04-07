@@ -2,7 +2,7 @@
   <v-btn
     v-ripple
     text
-    class="background d-flex flex-row overflow-hidden mb-4 mx-4 mainCard"
+    class="background d-flex flex-row overflow-hidden mb-4 mx-7 mainCard px-0"
     to="/playlist"
     style="height: 6rem !important"
     :class="
