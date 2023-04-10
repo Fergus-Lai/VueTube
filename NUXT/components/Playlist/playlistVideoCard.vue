@@ -69,7 +69,7 @@
     </v-card>
 
     <v-spacer></v-spacer>
-    <div class="d-flex flex-column">
+    <div class="d-flex w-50 flex-column">
       <v-btn
         text
         tile

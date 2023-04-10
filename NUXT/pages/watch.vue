@@ -563,7 +563,11 @@ export default {
     updatePlaylist(event, index) {
       if (event) {
         this.$store.commit("playlist/addToPlaylist", {
-          video: this.video,
+          video: {
+            id: this.video.id,
+            title: this.video.title,
+            channel: this.video.channelName,
+          },
           index,
         });
       } else {
