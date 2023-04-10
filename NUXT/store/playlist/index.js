@@ -28,7 +28,7 @@ export const mutations = {
     localStorage.setItem("playlists", JSON.stringify(state.playlists));
   },
   addToPlaylist(state, { index, video }) {
-    state.playlists[index].videos.push(video);
+    state.playlists[index].videos.unshift(video);
     localStorage.setItem("playlists", JSON.stringify(state.playlists));
   },
   removeFromPlaylist(state, { playlistIndex, video }) {
