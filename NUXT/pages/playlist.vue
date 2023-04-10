@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import playlistVideoCard from "../components/playlistVideoCard.vue";
+import playlistVideoCard from "~/components/playlist/playlistVideoCard.vue";
 export default {
   components: { playlistVideoCard },
   computed: {

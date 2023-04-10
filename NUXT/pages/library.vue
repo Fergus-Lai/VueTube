@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import playlistCard from "../components/playlistCard.vue";
+import playlistCard from "~/components/Playlist/playlistCard.vue";
 export default {
   components: { playlistCard },
   data() {

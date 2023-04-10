@@ -28,12 +28,15 @@ export const mutations = {
     localStorage.setItem("playlists", JSON.stringify(state.playlists));
   },
   addToPlaylist(state, { index, video }) {
-    state.playlists[index].video.push(video);
+    state.playlists[index].videos.push(video);
     localStorage.setItem("playlists", JSON.stringify(state.playlists));
   },
-  removeFromPlaylist(state, { playlistIndex, videoIndex }) {
-    state.currentPlaylist.videos.splice(videoIndex, 1);
-    state.playlists[playlistIndex].video.splice(videoIndex, 1);
+  removeFromPlaylist(state, { playlistIndex, video }) {
+    const videoIndex = state.playlists[playlistIndex].videos.findIndex(
+      (playlistVideo) => playlistVideo.id === video.id
+    );
+    if (videoIndex === -1) throw new Error("Unable To Find Video");
+    state.playlists[playlistIndex].videos.splice(videoIndex, 1);
     localStorage.setItem("playlists", JSON.stringify(state.playlists));
   },
   changeToPlaylist(state, videoIndex) {
