@@ -4,6 +4,7 @@
       v-for="(video, index) in playlist.videos"
       :key="index"
       :video="video"
+      @deleted="deletePlaylistVideo(video)"
     />
   </div>
 </template>
@@ -21,7 +22,7 @@ export default {
     deletePlaylistVideo(target) {
       this.$store.commit("playlist/removeFromPlaylist", {
         playlistIndex: this.playlist.index,
-        videoIndex: target,
+        video: target,
       });
     },
   },
